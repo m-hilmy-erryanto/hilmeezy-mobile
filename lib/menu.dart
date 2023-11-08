@@ -14,10 +14,10 @@ class MyHomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text(
-          'Shopping List',
-        ),
-      ),
+          title: const Text(
+            'Shopping List',
+          ),
+          backgroundColor: const Color.fromARGB(255, 41, 162, 255)),
       body: SingleChildScrollView(
         // Widget wrapper yang dapat discroll
         child: Padding(
