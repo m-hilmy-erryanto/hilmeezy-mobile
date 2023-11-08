@@ -1,16 +1,18 @@
 import 'package:flutter/material.dart';
- 
- class MyHomePage extends StatelessWidget {
+
+class MyHomePage extends StatelessWidget {
   MyHomePage({Key? key}) : super(key: key);
   final List<ShopItem> items = [
-    ShopItem("Lihat Item", Icons.checklist),
-    ShopItem("Tambah Item", Icons.add_shopping_cart),
-    ShopItem("Logout", Icons.logout),
+    ShopItem("Lihat Item", Icons.checklist,
+        const Color.fromARGB(255, 167, 193, 210)),
+    ShopItem("Tambah Item", Icons.add_shopping_cart,
+        const Color.fromARGB(255, 167, 193, 230)),
+    ShopItem("Logout", Icons.logout, const Color.fromARGB(255, 167, 193, 255)),
   ];
 
-    @override
-    Widget build(BuildContext context) {
-      return Scaffold(
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
       appBar: AppBar(
         title: const Text(
           'Shopping List',
@@ -54,17 +56,18 @@ import 'package:flutter/material.dart';
         ),
       ),
     );
-    }
   }
+}
 
-  class ShopItem {
-    final String name;
-    final IconData icon;
+class ShopItem {
+  final String name;
+  final IconData icon;
+  final Color color;
 
-    ShopItem(this.name, this.icon);
-  }
+  ShopItem(this.name, this.icon, this.color);
+}
 
-  class ShopCard extends StatelessWidget {
+class ShopCard extends StatelessWidget {
   final ShopItem item;
 
   const ShopCard(this.item, {super.key}); // Constructor
@@ -72,7 +75,7 @@ import 'package:flutter/material.dart';
   @override
   Widget build(BuildContext context) {
     return Material(
-      color: Colors.indigo,
+      color: item.color,
       child: InkWell(
         // Area responsive terhadap sentuhan
         onTap: () {

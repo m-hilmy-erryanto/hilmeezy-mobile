@@ -25,6 +25,6 @@
     - Membuat program flutter baru
         - Saya pergi ke direktori yang saya mau, membuka cmd, lalu menjalankan flutter create hilmeezy_mobile.
     - Membuat tiga tombol
-        - Pertama saya membuat list yang berisi ShopItem yang berisi tombol yang akan dipakai, yakni Lihat Item, Tambah Item, dan Logout. Lalu saya menggunakan kelas ShopCard yang mewakili dan tempat menampilkan setiap ShowItem.
+        - Pertama saya membuat list yang berisi ShopItem yang berisi tombol yang akan dipakai, yakni Lihat Item, Tambah Item, dan Logout. Saya juga menambahkan warna berbeda untuk setiap ShopItem. Lalu saya menggunakan kelas ShopCard yang mewakili dan tempat menampilkan setiap ShowItem.
     - Memunculkan snackbar
         - Saya mengatur onTap ShopCard untuk menampilkan snackbar dimana saat user menekan card, ScaffoldMessenger.of(context) akan digunakan untuk mengakses Scaffold yang mendefinisikan snackbar. Kemudian, showSnackBar akan menampilkan snackbar yang sesuai.
