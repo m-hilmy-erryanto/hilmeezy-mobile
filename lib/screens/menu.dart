@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:hilmeezy_mobile/widgets/left_drawer.dart';
+import 'package:hilmeezy_mobile/widgets/shop_card.dart';
 
 class MyHomePage extends StatelessWidget {
   MyHomePage({Key? key}) : super(key: key);
@@ -14,10 +16,13 @@ class MyHomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-          title: const Text(
-            'Shopping List',
-          ),
-          backgroundColor: const Color.fromARGB(255, 41, 162, 255)),
+        title: const Text(
+          'Hilmeezy Mobile',
+        ),
+        backgroundColor: const Color.fromARGB(255, 41, 162, 255),
+        foregroundColor: Colors.white,
+      ),
+      drawer: const LeftDrawer(),
       body: SingleChildScrollView(
         // Widget wrapper yang dapat discroll
         child: Padding(
@@ -29,7 +34,7 @@ class MyHomePage extends StatelessWidget {
                 padding: EdgeInsets.only(top: 10.0, bottom: 10.0),
                 // Widget Text untuk menampilkan tulisan dengan alignment center dan style yang sesuai
                 child: Text(
-                  'PBP Shop', // Text yang menandakan toko
+                  'Hilmeezy Records', // Text yang menandakan toko
                   textAlign: TextAlign.center,
                   style: TextStyle(
                     fontSize: 30,
@@ -52,59 +57,6 @@ class MyHomePage extends StatelessWidget {
                 }).toList(),
               ),
             ],
-          ),
-        ),
-      ),
-    );
-  }
-}
-
-class ShopItem {
-  final String name;
-  final IconData icon;
-  final Color color;
-
-  ShopItem(this.name, this.icon, this.color);
-}
-
-class ShopCard extends StatelessWidget {
-  final ShopItem item;
-
-  const ShopCard(this.item, {super.key}); // Constructor
-
-  @override
-  Widget build(BuildContext context) {
-    return Material(
-      color: item.color,
-      child: InkWell(
-        // Area responsive terhadap sentuhan
-        onTap: () {
-          // Memunculkan SnackBar ketika diklik
-          ScaffoldMessenger.of(context)
-            ..hideCurrentSnackBar()
-            ..showSnackBar(SnackBar(
-                content: Text("Kamu telah menekan tombol ${item.name}!")));
-        },
-        child: Container(
-          // Container untuk menyimpan Icon dan Text
-          padding: const EdgeInsets.all(8),
-          child: Center(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Icon(
-                  item.icon,
-                  color: Colors.white,
-                  size: 30.0,
-                ),
-                const Padding(padding: EdgeInsets.all(3)),
-                Text(
-                  item.name,
-                  textAlign: TextAlign.center,
-                  style: const TextStyle(color: Colors.white),
-                ),
-              ],
-            ),
           ),
         ),
       ),
