@@ -48,7 +48,7 @@ class _ShopFormPageState extends State<ShopFormPage> {
               },
               validator: (String? value) {
                 if (value == null || value.isEmpty) {
-                  return "Name tidak boleh kosong!";
+                  return "Item Name tidak boleh kosong!";
                 }
                 return null;
               },
