@@ -73,24 +73,44 @@
 
 ## Tugas 9
 * Apakah bisa kita melakukan pengambilan data JSON tanpa membuat model terlebih dahulu? Jika iya, apakah hal tersebut lebih baik daripada membuat model sebelum melakukan pengambilan data JSON?
-    - ans
+    - Ya, kita bisa mengambil dan menggunakan JSON tanpa harus membuat modelnya terlebih dahulu. Namun, cara tersebut tidak direkomendasikan karena akan lebih baik menggunakan data yang sudah di-parse ke model dibandingkan dengan menggunakan raw JSON. Penggunaan model akan membuat lebih rapi dan terstruktur.
 
 * Jelaskan fungsi dari CookieRequest dan jelaskan mengapa instance CookieRequest perlu untuk dibagikan ke semua komponen di aplikasi Flutter.
-    - ans
+    - CookieRequest adalah objek yang digunakan untuk mengelola permintaan HTTP dan menyimpan informasi cookie pada browser dalam aplikasi Flutter. Memiliki instance CookieRequest yang dibagikan ke semua komponen dalam aplikasi memungkinkan berbagai bagian dari aplikasi Flutter untuk berbagi dan mengelola data dari web platform. Hal ini memungkinkan aplikasi mobile untuk berinteraksi dengan web platform secara efektif, dengan memungkinkan akses dan manipulasi data dari web di seluruh kode Flutter.
 
 * Jelaskan mekanisme pengambilan data dari JSON hingga dapat ditampilkan pada Flutter.
-    - ans
+    - Pertama, dilakukan fetch data dari API endpoint. Lalu, data yang didapat di-decode menjadi bentuk JSON. Data dalam bentuk JSON kemudian di-convert menjadi bentuk model. Setelah itu data dalam bentuk model dapat digunakan pada aplikasi Flutter.
 
 * Jelaskan mekanisme autentikasi dari input data akun pada Flutter ke Django hingga selesainya proses autentikasi oleh Django dan tampilnya menu pada Flutter.
-    - ans
+    - Pertama, aplikasi meminta input untuk username dan password. Setelah mendapatkan input tersebut, Dart akan melakukan akses ke suatu URL yang mengarahkan ke bagian Django. Pada bagian fungsi Django, request dan argumen berupa nama dan password yang diterima dari Dart akan digunakan untuk proses otentikasi username dan password di Django. Selanjutnya, fungsi Django memberikan respons dalam format JSON sesuai dengan hasil otentikasi. Apabila username dan password valid, fungsi akan memberikan respons kepada Dart bahwa pengguna dapat melakukan login. Sebaliknya, jika proses otentikasi gagal, fungsi Django akan memberikan respons kepada Dart bahwa pengguna tidak berhasil melakukan login.
 
 * Sebutkan seluruh widget yang kamu gunakan dan jelaskan fungsinya!
-    - ans
+    - Container: berfungsi menampung widget di dalamnya. 
+    - Align: berfungsi untuk memberikan alignment pada widget di dalamnya. 
+    - Row: berfungsi untuk menempatkan widget secara horizontal. 
+    - Center: berfungsi untuk menempatkan widget di tengah. 
+    - Text: berfungsi untuk menampilkan teks. 
+    - Column: berfungsi untuk menampilkan widget secara vertikal. 
+    - AppBar: berfungsi sebagai appbar pada aplikasi. 
+    - Scaffold: berfungsi untuk memberikan struktur app. 
+    - MaterialApp: berfungsi ketika ingin menggunakan material design. 
+    - ListView.builder: berfungsi untuk menampilkan list of children yang scrollable. 
+    - SizedBox: berfungsi untuk memberikan jarak. 
+    - SingleChildScrollView: berfungsi untuk memberikan fungsionalitas scrollable terhadap child-nya. 
+    - Expanded: berfungsi untuk menampung widget dengan sifat expand-nya. 
+    - InkWell: berfungsi untuk memberikan behavior klik pada child widgetnya.
 
 * Pengimplementasian Checklist
     - Memastikan deployment Django telah berjalan dengan baik.
-    - Membuat halaman login
-    - Mengintegrasikan sistem autentikasi Django dengan Flutter
+
+    - Membuat halaman login dan mengintegrasikan sistem autentikasi Django dengan Flutter
+        - Membuat file login.dart yang memerlukan pengguna untuk menginputkan username dan password. Selanjutnya, menetapkan navigasi dari halaman input username dan password untuk melaksanakan proses autentikasi dengan menggunakan fitur otentikasi yang ada pada Django. Dengan memasukkan URL yang terhubung ke bagian aplikasi web Django yang bertanggung jawab untuk memverifikasi username dan password, aplikasi dapat menjalankan proses otentikasi. Jika input yang dimasukkan sudah benar, respons dari Django ke Flutter menunjukkan bahwa pengguna dapat login. Sebagai akibatnya, pengguna akan diarahkan ke halaman utama. Di sisi lain, jika otentikasi tidak berhasil, pengguna tidak dapat login.
+
     - Membuat model kustom
+        - Membuat model product yang mengikuti record di tugas Django. Penyusunan model objek menggunakan Quicktype, dimana kita memasukkan data JSON sebagai elemen input. Selanjutnya, model otomatis dibuat dalam bahasa Dart berdasarkan data JSON yang dimasukkan. Langkah ini memudahkan pembuatan file model Dart di dalam aplikasi dengan cara menyalin dan memasukkan kode yang telah dihasilkan secara otomatis oleh layanan Quicktype.
+
     - Membuat halaman yang berisi daftar semua item.
+        - Saya membuat page list_product.dart untuk menampilkan seluruh list mywatch.
+
     - Membuat halaman detail untuk setiap item yang terdapat pada halaman daftar Item.
+        - Saya membuat file detail_page.dart yang menerima indeks dari item yang diklik. Kemudian, saya merancang tata letak teks yang menampilkan detail item dengan menggunakan nilai indeks sebagai parameter saat mengakses kelasnya. Selanjutnya, saya menambahkan tombol elevated button yang akan memicu navigasi kembali ke halaman list_product.dart ketika ditekan.
