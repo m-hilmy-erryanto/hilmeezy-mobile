@@ -3,6 +3,7 @@ import 'package:http/http.dart' as http;
 import 'dart:convert';
 import 'package:hilmeezy_mobile/models/product.dart';
 import 'package:hilmeezy_mobile/widgets/left_drawer.dart';
+import 'package:hilmeezy_mobile/screens/detail_page.dart';
 
 class ProductPage extends StatefulWidget {
     const ProductPage({Key? key}) : super(key: key);
@@ -39,6 +40,8 @@ Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
         title: const Text('Item'),
+        backgroundColor: const Color.fromARGB(255, 41, 162, 255),
+        foregroundColor: Colors.white,
         ),
         drawer: const LeftDrawer(),
         body: FutureBuilder(
@@ -59,33 +62,80 @@ Widget build(BuildContext context) {
                         ],
                     );
                 } else {
-                    return ListView.builder(
-                        itemCount: snapshot.data!.length,
-                        itemBuilder: (_, index) => Container(
-                                margin: const EdgeInsets.symmetric(
-                                    horizontal: 16, vertical: 12),
-                                padding: const EdgeInsets.all(20.0),
-                                child: Column(
+                  return ListView.builder(
+                    itemCount: snapshot.data!.length,
+                    itemBuilder: (_, index) {
+                      // isWatched = snapshot.data![index].watched;
+                      return InkWell(
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => DetailPage(
+                                  data: snapshot.data![index],),
+                            ),
+                          );
+                        },
+                        child: Container(
+                          margin: const EdgeInsets.symmetric(
+                            horizontal: 16,
+                            vertical: 12,
+                          ),
+                          padding: const EdgeInsets.all(20.0),
+                          decoration: BoxDecoration(
+                            color: Colors.white,
+                            border: Border.all(
+                              color:Colors.blue
+                            ),
+                            borderRadius: BorderRadius.circular(15.0),
+                            boxShadow: const [
+                              BoxShadow(
+                                color: Colors.white,
+                                blurRadius: 2.0,
+                              )
+                            ],
+                          ),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Column(
                                 mainAxisAlignment: MainAxisAlignment.start,
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
-                                    Text(
-                                    "${snapshot.data![index].fields.name}",
+                                  Text(
+                                    '${snapshot.data![index].fields.name}',
                                     style: const TextStyle(
-                                        fontSize: 18.0,
-                                        fontWeight: FontWeight.bold,
+                                      fontSize: 18.0,
+                                      fontWeight: FontWeight.bold,
                                     ),
+                                  ),
+                                  Text(
+                                    '${snapshot.data![index].fields.amount}',
+                                    style: const TextStyle(
+                                      fontSize: 18.0,
+                                      fontWeight: FontWeight.bold,
                                     ),
-                                    const SizedBox(height: 10),
-                                    Text("${snapshot.data![index].fields.amount}"),
-                                    const SizedBox(height: 10),
-                                    Text(
-                                        "${snapshot.data![index].fields.description}"),
+                                  ),
+                                  Text(
+                                    '${snapshot.data![index].fields.description}',
+                                    style: const TextStyle(
+                                      fontSize: 18.0,
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                  ),
+                                  const SizedBox(height: 10),
                                 ],
-                                ),
-                            ));
-                    }
+                              ),
+                            ],
+                          ),
+                        ),
+                      );
+                    },
+                  );
                 }
-            }));
-    }
+            }
+          },
+        ),
+    );
+  }
 }

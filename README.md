@@ -70,3 +70,27 @@
         - Pada _ShopFormPageState, setelah mengecek bahwa form sudah divalidasi. saya menampilkan data dalam pop-up menggunakan showDialog.
     - Membuat drawer
         - Di file left_drawer.dart, saya menambahkan opsi "Halaman Utama" dan "Tambah Item" pada ListView. Lalu saya mengatur onTap-nya agar bisa mengarahkan user ke halaman yang sesuai menggunakan Navigator.pushReplacement().
+
+## Tugas 9
+* Apakah bisa kita melakukan pengambilan data JSON tanpa membuat model terlebih dahulu? Jika iya, apakah hal tersebut lebih baik daripada membuat model sebelum melakukan pengambilan data JSON?
+    - ans
+
+* Jelaskan fungsi dari CookieRequest dan jelaskan mengapa instance CookieRequest perlu untuk dibagikan ke semua komponen di aplikasi Flutter.
+    - ans
+
+* Jelaskan mekanisme pengambilan data dari JSON hingga dapat ditampilkan pada Flutter.
+    - ans
+
+* Jelaskan mekanisme autentikasi dari input data akun pada Flutter ke Django hingga selesainya proses autentikasi oleh Django dan tampilnya menu pada Flutter.
+    - ans
+
+* Sebutkan seluruh widget yang kamu gunakan dan jelaskan fungsinya!
+    - ans
+
+* Pengimplementasian Checklist
+    - Memastikan deployment Django telah berjalan dengan baik.
+    - Membuat halaman login
+    - Mengintegrasikan sistem autentikasi Django dengan Flutter
+    - Membuat model kustom
+    - Membuat halaman yang berisi daftar semua item.
+    - Membuat halaman detail untuk setiap item yang terdapat pada halaman daftar Item.
